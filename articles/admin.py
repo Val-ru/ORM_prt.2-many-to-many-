@@ -7,7 +7,7 @@ class ScopeInlineFormset(BaseInlineFormSet):
     def clean(self):
         count = 0
         for form in self.forms:
-            if self.form.cleaned_data.get('is_main'):
+            if form.cleaned_data.get('is_main'):
                 count += 1
             if count > 1:
                 raise ValidationError('Основным может быть только один раздел')
